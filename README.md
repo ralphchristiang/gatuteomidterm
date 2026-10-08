@@ -2,6 +2,16 @@
 
 A Vue 3 single-page website built from the supplied GatuteoMidterm starter. The original Vite, Vue Router, assets, components, and views organization is retained. No new application dependencies were added.
 
+## Latest update: readable text and dark mode
+
+- Hero heading: approximately 74–96px on larger screens, with a responsive phone size.
+- Section headings: approximately 44–50px on desktop, 38px on tablet, and 34px on phones.
+- Main descriptions: 16px; hero introduction: 18px. Supporting labels, personnel credentials, navigation, and footer text have also been increased.
+- A small **Dark mode** switch in the footer changes the full website theme and remembers the choice in the browser. Light mode remains the default. If browser storage is blocked, the switch still works for the current page.
+- Narrow phone layouts use full-width program cards, and small phones use a single-column personnel layout to keep the larger text comfortable to read.
+
+For your existing Git-connected project, copy the updated **src/** folder and **README.md** from this ZIP into the existing folder. Keep your existing **.git**, package files, and Vite configuration. The code files changed in this update are `src/assets/main.css`, `src/components/SiteFooter.vue`, `src/main.js`, and the new `src/composables/useTheme.js`.
+
 ## Run the project
 
 1. Install Node.js **24.12 or newer**, or a supported Node 22 release **22.18 or newer**.
@@ -56,6 +66,8 @@ GatuteoMidterm/
 │   │   ├── SiteFooter.vue
 │   │   ├── SiteNavbar.vue
 │   │   └── UiIcon.vue
+│   ├── composables/
+│   │   └── useTheme.js
 │   ├── router/
 │   │   └── index.js
 │   └── views/
@@ -113,7 +125,7 @@ The router returns `{ el: to.hash, top: 104, behavior: 'smooth' }`. The offset k
 ## File-by-file changes
 
 - `App.vue`: replaced starter content with navigation, router outlet, footer, and skip link.
-- `main.js`: retained app initialization and imported the shared stylesheet.
+- `main.js`: retained app initialization, imported the shared stylesheet, and applied the saved theme before mounting.
 - `router/index.js`: registered the home view and added hash scrolling, header offset, history restoration, and reduced-motion handling.
 - `views/HomeView.vue`: composed the four required sections.
 - `components/SiteNavbar.vue`: added branded navigation, a mobile menu, active-section tracking, and observer cleanup.
@@ -121,8 +133,9 @@ The router returns `{ el: to.hash, top: 104, behavior: 'smooth' }`. The offset k
 - `components/ProgramsSection.vue`: rendered program data, accessible disclosures, and official information links.
 - `components/FacultySection.vue`: grouped personnel, added department filtering, and documented source limitations.
 - `components/PartnersSection.vue`: added partner logos, attribution, and a college email contact.
-- `components/SiteFooter.vue`: added location, email, section navigation, and back-to-top behavior.
+- `components/SiteFooter.vue`: added location, email, section navigation, back-to-top behavior, and a compact dark-mode switch.
 - `components/SectionHeading.vue` and `components/UiIcon.vue`: centralized repeated heading and icon markup.
+- `composables/useTheme.js`: centralized reactive theme state, initialization, persistence, and storage-error handling.
 - `assets/data/college.js`: centralized editable content, images, and source URLs.
 - `assets/main.css`: centralized design tokens, layout, responsive styling, and motion preferences.
 - `index.html` and `public/ccs-icon.png`: added a relevant title, description, language, theme color, and favicon.
@@ -130,9 +143,9 @@ The router returns `{ el: to.hash, top: 104, behavior: 'smooth' }`. The offset k
 
 ## Verification
 
-The production Vite build passed. All 10 Vue components compiled. Automated checks covered section targets, local image references, smooth scrolling, saved scroll positions, and reduced-motion behavior. A server-rendered page check covered section IDs, personnel portraits, program links, and partner content.
+The production Vite build passed. All 10 Vue components compiled. Automated checks covered section targets, local image references, smooth scrolling, saved scroll positions, and reduced-motion behavior. The earlier server-rendered page check covered section IDs, personnel portraits, program links, and partner content. Theme checks cover light/dark switching, restored preferences, invalid saved values, and unavailable storage.
 
-Browser-based visual and interaction review was unavailable in the build environment. Before submission, check the live site on a phone and desktop, try all menu links and department filters, expand each program, and check browser Back/Forward. Also confirm that the instructor can access the hosting URL: the managed live deployment starts private to its owner.
+Browser-based visual and interaction review was unavailable in the build environment. Before submission, check the live site on a phone and desktop, try all menu links and department filters, expand each program, and check browser Back/Forward. Also confirm that the instructor can access the hosting URL: this ZIP update was prepared locally without a new live deployment.
 
 ## Sources and attribution
 

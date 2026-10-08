@@ -1,6 +1,9 @@
 <script setup>
 import { college, sections } from '@/assets/data/college'
+import { useTheme } from '@/composables/useTheme'
 import UiIcon from './UiIcon.vue'
+
+const { isDark, toggleTheme } = useTheme()
 </script>
 
 <template>
@@ -32,6 +35,19 @@ import UiIcon from './UiIcon.vue'
           © {{ new Date().getFullYear() }} · CCS student website mockup by Ralph Christian C.
           Gatuteo
         </p>
+        <button
+          class="theme-switch"
+          type="button"
+          role="switch"
+          :aria-checked="isDark"
+          aria-label="Dark mode"
+          @click="toggleTheme"
+        >
+          <span>Dark mode</span>
+          <span class="theme-switch-track" aria-hidden="true">
+            <span class="theme-switch-thumb"></span>
+          </span>
+        </button>
         <a href="https://ccs.cpu.edu.ph/" target="_blank" rel="noopener noreferrer"
           >Official CCS website <UiIcon name="external" /></a
         ><RouterLink class="back-top" to="/#hero" aria-label="Back to top"
